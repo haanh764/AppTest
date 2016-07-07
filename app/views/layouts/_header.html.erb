@@ -1,0 +1,13 @@
+<header class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to t('home_page.e-learning'), root_path, id: "logo" %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><%= link_to t('home_page.home'), root_path %></li>
+      <li><%= link_to t('home_page.sign_in') %></li>
+      <li><%= link_to t('home_page.about'), about_path %></li>
+      <li><%= link_to t('home_page.help'), help_path %></li> 
+    </ul>
+  </div>
+</header>

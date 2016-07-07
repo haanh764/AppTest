@@ -1,0 +1,32 @@
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+en:
+  about_page:
+    about: "ABOUT US"
+  help_page: 
+    help: "HELP"
+  home_page:
+    about: "About us"
+    e-learning: "E-Learning"
+    hello: "Hello world"
+    help: "Help"      
+    home: "Home"
+    intro1: "120 LANGUAGE. 6000 VOCANULARY WORDS."
+    intro2: "IN JUST OVER A YEAR."
+    intro3: "How many words can you learn this month?"
+    intro4: "Try E-learning for free."
+    sign_in: "Sign in"
+    sign_up: "Sign up now!"
+    welcome: "WELCOME"
+
+
