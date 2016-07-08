@@ -3,11 +3,28 @@
     <div class="navbar-header">
       <%= link_to t('home_page.e-learning'), root_path, id: "logo" %>
     </div>
+    <nav>
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><%= link_to t('home_page.home'), root_path %></li>
-      <li><%= link_to t('home_page.sign_in'), signin_path %></li>
       <li><%= link_to t('home_page.about'), about_path %></li>
       <li><%= link_to t('home_page.help'), help_path %></li>
+      <% if signed_in? %>
+        <li><%= link_to "Users" %></li>
+        <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile" %></li>
+              <li><%= link_to "Settings" %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Sign out" %></li>
+            </ul>
+        </li>
+      <% else %>
+        <li><%= link_to t('home_page.sign_in'), signin_path %></li>
+      <% end %>
     </ul>
+  </nav>
   </div>
 </header>
