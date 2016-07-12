@@ -1,7 +1,12 @@
-<div class="hero-unit">
+<% if signed_in? %>
+  <h1>THIS IS HOMEPAGE</h1>
+  <h2>WORDLIST OR LESSON</h2>
+<% else %>
+  <div class="hero-unit">
   <div class="container2">
     <h1><%= t("home_page.welcome") %></h1>
     <h2><%= t("home_page.intro1") %><br><%= t("home_page.intro2") %><br><br><%= t("home_page.intro3") %><br><%= t("home_page.intro4") %></h2>
     <br><%= link_to t("home_page.sign_up"), signup_path ,class: "btn btn-large btn-primary" %>
   </div>
-</div>
+  </div>
+<% end %>
