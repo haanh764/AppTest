@@ -1,5 +1,14 @@
 <% provide(:title, @user.name) %>
-<h1>
-  <%= avatar_for @user %>
-  <%= @user.name %>
-</h1>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= avatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section>
+      <span style="padding-right: 73%;"><%= render 'follow_form' if signed_in? %>
+    </section>
+  </aside>
+</div>
