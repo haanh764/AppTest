@@ -42240,3 +42240,158 @@ Processing by RelationshipsController#destroy as JS
   [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follower_id` WHERE `relationships`.`followed_id` = 3
   Rendered relationships/destroy.js.erb (3.8ms)
 Completed 200 OK in 50ms (Views: 5.2ms | ActiveRecord: 39.6ms)
+
+
+Started POST "/relationships" for 127.0.0.1 at 2016-07-21 10:36:03 +0700
+Processing by RelationshipsController#create as JS
+  Parameters: {"utf8"=>"✓", "relationship"=>{"followed_id"=>"3"}, "commit"=>"Follow"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`remember_token` = 'a3a3b18a05b17d66715373bc5fff7fbdc9915665' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `relationships` (`followed_id`, `follower_id`, `created_at`, `updated_at`) VALUES (3, 5, '2016-07-21 03:36:03', '2016-07-21 03:36:03')
+  [1m[36m (88.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mRelationship Load (0.3ms)[0m  SELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1
+  Rendered users/_unfollow.html.erb (1.9ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follower_id` WHERE `relationships`.`followed_id` = 3[0m
+  Rendered relationships/create.js.erb (5.2ms)
+Completed 200 OK in 101ms (Views: 6.3ms | ActiveRecord: 89.5ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`followed_id` WHERE `relationships`.`follower_id` = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follower_id` WHERE `relationships`.`followed_id` = 3
+  Rendered shared/_stats.html.erb (10.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`remember_token` = 'a3a3b18a05b17d66715373bc5fff7fbdc9915665' LIMIT 1[0m
+  [1m[35mRelationship Load (0.1ms)[0m  SELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1[0m  [["follower_id", 5], ["followed_id", 3]]
+  Rendered users/_unfollow.html.erb (3.7ms)
+  Rendered users/_follow_form.html.erb (6.2ms)
+  Rendered users/show.html.erb within layouts/application (24.1ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 93ms (Views: 89.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/custom.self-04e107d944fe17a695013cba8f08a4a0229cc0e0749f39029a76b8a61a755ec2.css?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/bootstrap.self-cdea7efeac1597b89ddd6fd86b0e8e0bec5d5fb1fac9c6e8a045f2c59eef2d13.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/material.self-ee27775c8435e1ff03ac75ab79dc0489825c122171b2e9a0cc41d5a480b08d82.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/ava-de32b3d9699069825187411cee9a7427398cd9c5fed931276aef0ba3753b3f79.jpg" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/bg1.jpg" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started GET "/assets/roboto/Roboto-Regular-cc7b26ac53700f78f8a452be6d14f14943e88dceb14edf64cddceba6e66f3f5e.woff2" for 127.0.0.1 at 2016-07-21 10:36:46 +0700
+
+
+Started DELETE "/relationships/16" for 127.0.0.1 at 2016-07-21 10:36:50 +0700
+Processing by RelationshipsController#destroy as JS
+  Parameters: {"utf8"=>"✓", "commit"=>"Unfollow", "id"=>"16"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`remember_token` = 'a3a3b18a05b17d66715373bc5fff7fbdc9915665' LIMIT 1
+  [1m[36mRelationship Load (0.3ms)[0m  [1mSELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`id` = 16 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mRelationship Load (0.1ms)[0m  [1mSELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `relationships` WHERE `relationships`.`id` = 16[0m
+  [1m[35m (31.5ms)[0m  COMMIT
+  Rendered users/_follow.html.erb (1.3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follower_id` WHERE `relationships`.`followed_id` = 3[0m
+  Rendered relationships/destroy.js.erb (4.9ms)
+Completed 200 OK in 45ms (Views: 6.7ms | ActiveRecord: 32.8ms)
+
+
+Started POST "/relationships" for 127.0.0.1 at 2016-07-21 10:36:51 +0700
+Processing by RelationshipsController#create as JS
+  Parameters: {"utf8"=>"✓", "relationship"=>{"followed_id"=>"3"}, "commit"=>"Follow"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`remember_token` = 'a3a3b18a05b17d66715373bc5fff7fbdc9915665' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `relationships` (`followed_id`, `follower_id`, `created_at`, `updated_at`) VALUES (3, 5, '2016-07-21 03:36:51', '2016-07-21 03:36:51')[0m
+  [1m[35m (34.4ms)[0m  COMMIT
+  [1m[36mRelationship Load (0.3ms)[0m  [1mSELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1[0m
+  Rendered users/_unfollow.html.erb (2.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follower_id` WHERE `relationships`.`followed_id` = 3
+  Rendered relationships/create.js.erb (5.4ms)
+Completed 200 OK in 47ms (Views: 6.4ms | ActiveRecord: 35.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-07-21 10:36:54 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`remember_token` = 'a3a3b18a05b17d66715373bc5fff7fbdc9915665' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` LIMIT 30 OFFSET 0[0m
+  Rendered users/_user.html.erb (5.8ms)
+  Rendered users/index.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 78ms (Views: 75.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/roboto/Roboto-Bold-761c95dd192a81733d024d9f644d9b531c358f0f0ea83e9fd6211b6bd424873d.woff2" for 127.0.0.1 at 2016-07-21 10:36:54 +0700
+
+
+Started GET "/users/3" for 127.0.0.1 at 2016-07-21 10:36:56 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`followed_id` WHERE `relationships`.`follower_id` = 3[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follower_id` WHERE `relationships`.`followed_id` = 3
+  Rendered shared/_stats.html.erb (7.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`remember_token` = 'a3a3b18a05b17d66715373bc5fff7fbdc9915665' LIMIT 1[0m
+  [1m[35mRelationship Load (0.2ms)[0m  SELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1[0m  [["follower_id", 5], ["followed_id", 3]]
+  Rendered users/_unfollow.html.erb (2.8ms)
+  Rendered users/_follow_form.html.erb (7.3ms)
+  Rendered users/show.html.erb within layouts/application (24.2ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 94ms (Views: 90.4ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/relationships/17" for 127.0.0.1 at 2016-07-21 10:36:58 +0700
+Processing by RelationshipsController#destroy as JS
+  Parameters: {"utf8"=>"✓", "commit"=>"Unfollow", "id"=>"17"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`remember_token` = 'a3a3b18a05b17d66715373bc5fff7fbdc9915665' LIMIT 1
+  [1m[36mRelationship Load (0.9ms)[0m  [1mSELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`id` = 17 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mRelationship Load (0.1ms)[0m  [1mSELECT  `relationships`.* FROM `relationships` WHERE `relationships`.`follower_id` = 5 AND `relationships`.`followed_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM `relationships` WHERE `relationships`.`id` = 17[0m
+  [1m[35m (54.6ms)[0m  COMMIT
+  Rendered users/_follow.html.erb (1.1ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follower_id` WHERE `relationships`.`followed_id` = 3[0m
+  Rendered relationships/destroy.js.erb (3.8ms)
+Completed 200 OK in 68ms (Views: 5.7ms | ActiveRecord: 56.9ms)
